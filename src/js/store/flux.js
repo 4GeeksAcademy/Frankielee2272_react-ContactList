@@ -1,7 +1,15 @@
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
-      contacts: [],
+      contacts: [
+        {
+          "full_name": "Dave Bradley",
+          "email": "dave@gmail.com",
+          "agenda_slug": "Frankielee2272",
+          "address": "47568 NW 34ST, 33434 FL, USA",
+          "phone": "7864445566"
+        }
+      ],
     },
     actions: {
       getContacts: () => {

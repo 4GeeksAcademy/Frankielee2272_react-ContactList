@@ -5,15 +5,15 @@ import { Link } from "react-router-dom";
 export const Home = () => {
   const { store, actions } = useContext(Context);
   return (
-    <div className="text-center mt-5">
-      <Link to="/add-contact">
-        <button className="btn btn-primary">Add new contact</button>
+    <div className="mt-5">
+      <Link className="text" to="/add-contact">
+        <button className="btn btn-primary ms-auto">Add new contact</button>
       </Link>
       <div>
         <h1>List Contacts</h1>
         {store.contacts.map((contact) => (
-          <div>
-            <div>
+          <div className="d-flex justify-content-center">
+            <div className="me-5">
               <img src="..." />
             </div>
             <div>
@@ -31,7 +31,7 @@ export const Home = () => {
                 {contact.email}
               </p>
             </div>
-            <div>
+            <div className="ms-5">
               <button>
                 <i class="fa-solid fa-pencil"></i>
               </button>
