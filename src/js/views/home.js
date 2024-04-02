@@ -6,18 +6,24 @@ export const Home = () => {
   const { store, actions } = useContext(Context);
   return (
     <div className="mt-5">
-      <Link className="text" to="/add-contact">
-        <button className="btn btn-primary ms-auto">Add new contact</button>
+      <Link className="d-flex" to="/add-contact">
+        <button className="ms-auto btn btn-primary">Add new contact</button>
       </Link>
+
       <div>
-        <h1>List Contacts</h1>
+        <h1 className="text-center">List Contacts</h1>
+
         {store.contacts.map((contact) => (
           <div className="d-flex justify-content-center">
             <div className="me-5">
-              <img src="..." />
+              <img
+                className=""
+                height="100px"
+                src="https://cdn3.iconfinder.com/data/icons/mixed-communication-and-ui-pack-1/48/general_pack_NEW_glyph_profile-512.png"
+              />
             </div>
             <div>
-              <h4>{contact.full_name}</h4>
+              <h4>{contact.name}</h4>
               <p>
                 <i class="fa-solid fa-location-dot"></i>
                 {contact.address}

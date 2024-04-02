@@ -2,22 +2,16 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       contacts: [
-        {
-          "full_name": "Dave Bradley",
-          "email": "dave@gmail.com",
-          "agenda_slug": "Frankielee2272",
-          "address": "47568 NW 34ST, 33434 FL, USA",
-          "phone": "7864445566"
-        }
+       
       ],
     },
     actions: {
       getContacts: () => {
         fetch(
-          "https://playground.4geeks.com/apis/fake/contact/agenda/Frankielee2272"
+          "https://playground.4geeks.com/contact/agendas/Frankielee2272/contacts"
         )
           .then((response) => response.json())
-          .then((data) => setStore({ contacts: data }))
+          .then((data) => setStore({ contacts: data.contacts}))
           .catch((error) => console.log("There was an error: ", error));
       },
     },
