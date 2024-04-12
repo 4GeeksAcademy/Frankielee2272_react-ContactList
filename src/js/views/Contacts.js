@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams} from "react-router-dom";
 
 import { ContactCard } from "../component/ContactCard.js";
 import { Modal } from "../component/Modal";
@@ -31,7 +31,7 @@ export const Contacts = () => {
           aria-expanded="true"
         >
           <ul className="list-group pull-down" id="contact-list">
-            {store.contacts.map((contact, index) => (
+            {store?.contacts?.map((contact, index) => (
               <ContactCard
                 key={contact.id}
                 contact={contact}

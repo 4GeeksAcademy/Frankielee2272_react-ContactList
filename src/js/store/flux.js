@@ -5,15 +5,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			getContacts: () => {
-				fetch("https://playground.4geeks.com/contact/agendas/Frankielee2272/contacts")
+				fetch("https://playground.4geeks.com/contact/agendas/frankielee/contacts")
 					.then((response) => {
 						if (response.ok) {
 							return response.json();
 						}
 					})
 					.then((body) => {
+						console.log (body);
 						setStore({
-							contacts: body
+							contacts: body.contacts
 						});
 					});
 

@@ -3,11 +3,12 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 
 export const AddContact = () => {
   const params = useParams();
+  const apiurl= "https://playground.4geeks.com/contact/agendas/frankielee/contacts/"
   useEffect(() => {
     if ("contactId" in params) {
       console.log(params.contactId);
       fetch(
-        `https://playground.4geeks.com/apis/fake/contact/${params.contactId}`
+      apiurl+ params.contactId
       )
         .then((response) => response.json())
         .then((body) => setNewContact(body[0]));
@@ -18,7 +19,7 @@ export const AddContact = () => {
   const [newContact, setNewContact] = useState({});
   const updateContact = async () => {
     const response = await fetch(
-      `https://playground.4geeks.com/apis/fake/contact/${params.contactId}`,
+      `https://playground.4geeks.com/contact/agendas/frankielee/contacts/${params.contactId}`,
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -34,13 +35,12 @@ export const AddContact = () => {
   };
   const createContact = async () => {
     const response = await fetch(
-      "https://playground.4geeks.com/apis/fake/contact",
+      "https://playground.4geeks.com/contact/agendas/frankielee/contacts",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...newContact,
-          agenda_slug: "my_super_agenda",
         }),
       }
     );
@@ -61,12 +61,12 @@ export const AddContact = () => {
               className="form-control"
               placeholder="Full Name"
               //add
-              value={newContact?.full_name || ""}
+              value={newContact?.name || ""}
               onChange={(e) =>
                 setNewContact((previousNewContact) => {
                   return {
                     ...previousNewContact,
-                    full_name: e.target.value,
+                    name: e.target.value,
                   };
                 })
               }
