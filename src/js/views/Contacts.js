@@ -54,13 +54,14 @@ export const Contacts = () => {
     // Check if the contactIdToDelete is set and not false
     if (contactIdToDelete) {
       try {
-        const response = await fetch(
-          `https://playground.4geeks.com/contact/frankielee/contacts/${contactIdToDelete}`,
+        const url = `https://playground.4geeks.com/contact/agendas/frankielee/contacts/${contactIdToDelete}`;
+        console.log("Deleting contact: ", url)
+
+        const response = await fetch( url,
           {
             method: "DELETE",
             headers: { "Content-Type": "application/json" },
-          }
-        );
+          });
 
         if (response.ok) {
           // Contact deleted successfully

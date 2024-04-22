@@ -22,18 +22,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 			deleteContact: id=> {
 				fetch(`https://playground.4geeks.com/contact/agendas/frankielee/contacts/${id}`, {
 					method: "DELETE",
-					body: JSON.stringify(id),
+					// body: JSON.stringify(id),
 					headers: { "Content-Type": "application/json" }
 				})
 				.then((response) => {
 					if (response.ok) {
 						getActions().getContacts();
 					}
+					else
+					{
+						console.error("Failed to delete contact. Status: ", response.status)
+					}
 				})
 				.then((body)=>{
                     console.log(body);
                     getActions().getContacts()
                 })
+				.catch(error => {
+					//Handle any network or other errors that occur during the request
+					console.error("Error deleting contact: ", error)
+				})
 			},
 
 			exampleFunction: () => {
