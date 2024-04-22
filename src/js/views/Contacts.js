@@ -45,25 +45,45 @@ export const Contacts = () => {
           </ul>
         </div>
       </div>
-      <Modal
-        show={state.showModal}
-        onClose={() => setState({ showModal: false })}
-        //add delete-button
-        onConfirm={async () => {
-          const response = await fetch(
-            `https://playground.4geeks.com/apis/fake/contact/${contactIdToDelete}`,
-            {
-              method: "DELETE",
-              headers: { "Content-Type": "application/json" },
-            }
-          );
-          if (response.ok) {
-            actions.getContacts();
+      // ...other code...
+
+<Modal
+  show={state.showModal}
+  onClose={() => setState({ showModal: false })}
+  onConfirm={async () => {
+    // Check if the contactIdToDelete is set and not false
+    if (contactIdToDelete) {
+      try {
+        const response = await fetch(
+          `https://playground.4geeks.com/contact/frankielee/contacts/${contactIdToDelete}`,
+          {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" },
           }
-          console.log("false");
-          setContactIdToDelete(false);
-        }}
-      />
+        );
+
+        if (response.ok) {
+          // Contact deleted successfully
+          console.log(`Contact with ID ${contactIdToDelete} deleted successfully.`);
+          // Now, refresh the contacts list
+          await actions.getContacts();
+        } else {
+          // Handle the error if the server doesn't return a success status
+          console.error(`Failed to delete contact with ID ${contactIdToDelete}. Status: ${response.status}`);
+        }
+      } catch (error) {
+        console.error("Error during deletion:", error);
+      }
+    } else {
+      console.error("No contact ID to delete.");
+    }
+
+    // Reset the contactIdToDelete and close the modal after attempting the deletion
+    setContactIdToDelete(null);
+    setState({ showModal: false });
+  }}
+/>
+
     </div>
   );
-};
+}

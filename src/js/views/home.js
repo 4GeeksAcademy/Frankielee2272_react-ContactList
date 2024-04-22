@@ -16,11 +16,11 @@ export const Home = () => {
         {store.contacts.map((contact) => (
           <div className="d-flex justify-content-center">
             <div className="me-5">
-              <img
+              {/* <img
                 className=""
                 height="100px"
                 src="https://cdn3.iconfinder.com/data/icons/mixed-communication-and-ui-pack-1/48/general_pack_NEW_glyph_profile-512.png"
-              />
+              /> */}
             </div>
             <div>
               <h4>{contact.name}</h4>

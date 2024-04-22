@@ -6,18 +6,13 @@ export const ContactCard = (props) => {
   const [state, setState] = useState({
     //initialize state here
   });
+  const [editOpen, setEditOpen] = useState(false);
 
   return (
     <li className="list-group-item">
       <div className="row w-100">
         <div className="col-12 col-sm-6 col-md-3 px-0">
-          <img
-            src={
-              ""
-            }
-            alt="Mike Anamendolla"
-            className="rounded-circle mx-auto d-block img-fluid"
-          />
+         
         </div>
         <div className="col-12 col-sm-6 col-md-9 text-center text-sm-left">
           <div className=" float-right">

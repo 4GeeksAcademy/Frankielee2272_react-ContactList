@@ -19,6 +19,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 
 			},
+			deleteContact: id=> {
+				fetch(`https://playground.4geeks.com/contact/agendas/frankielee/contacts/${id}`, {
+					method: "DELETE",
+					body: JSON.stringify(id),
+					headers: { "Content-Type": "application/json" }
+				})
+				.then((response) => {
+					if (response.ok) {
+						getActions().getContacts();
+					}
+				})
+				.then((body)=>{
+                    console.log(body);
+                    getActions().getContacts()
+                })
+			},
 
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
